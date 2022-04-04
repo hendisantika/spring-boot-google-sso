@@ -31,16 +31,19 @@ public class HomeController {
 
     @PreAuthorize("hasAuthority('VIEW_REKENING')")
     @GetMapping("rekening")
-    public void daftarRekening() {
+    public String daftarRekening() {
+        return "rekening";
     }
 
     @PreAuthorize("hasAuthority('VIEW_MUTASI')")
     @GetMapping("mutasi")
-    public void mutasiRekening() {
+    public String mutasiRekening() {
+        return "mutasi";
     }
 
     @PreAuthorize("hasAuthority('EDIT_TRANSFER')")
     @GetMapping("transfer")
-    public void transfer() {
+    public String transfer() {
+        return "transfer";
     }
 }

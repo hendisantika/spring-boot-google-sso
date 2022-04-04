@@ -1,4 +1,4 @@
-CREATE TABLE s_permission
+CREATE TABLE t_permission
 (
     id               VARCHAR(255) NOT NULL,
     permission_label VARCHAR(255) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE s_permission
     UNIQUE (permission_value)
 );
 
-CREATE TABLE s_role
+CREATE TABLE t_role
 (
     id          VARCHAR(255) NOT NULL,
     description VARCHAR(255) DEFAULT NULL,
@@ -16,21 +16,21 @@ CREATE TABLE s_role
     UNIQUE (name)
 );
 
-CREATE TABLE s_role_permission
+CREATE TABLE t_role_permission
 (
     id_role       VARCHAR(255) NOT NULL,
     id_permission VARCHAR(255) NOT NULL,
     PRIMARY KEY (id_role, id_permission),
-    FOREIGN KEY (id_permission) REFERENCES s_permission (id),
-    FOREIGN KEY (id_role) REFERENCES s_role (id)
+    FOREIGN KEY (id_permission) REFERENCES t_permission (id),
+    FOREIGN KEY (id_role) REFERENCES t_role (id)
 );
 
-CREATE TABLE s_user
+CREATE TABLE t_user
 (
     id       varchar(36),
     username varchar(100) NOT NULL,
     id_role  varchar(36)  NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id_role) REFERENCES s_role (id),
+    FOREIGN KEY (id_role) REFERENCES t_role (id),
     UNIQUE (username)
 );
