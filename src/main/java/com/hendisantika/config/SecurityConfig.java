@@ -2,6 +2,7 @@ package com.hendisantika.config;
 
 import com.hendisantika.repository.UserRepository;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -22,5 +23,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public SecurityConfig(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and().logout().permitAll()
+                .and().oauth2Login()
+                .userInfoEndpoint()
+                .userAuthoritiesMapper(authoritiesMapper())
+                .and().defaultSuccessUrl("/home", true);
     }
 }
