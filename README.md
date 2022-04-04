@@ -8,3 +8,13 @@
 4. Replace Google credentials with your own.
 5. Run the application: `mvn clean spring-boot:run`
 6. Open your favorite browser: http://localhost:8080
+
+### Image Screen shot
+
+Login Page
+
+![Login Page](img/login.png "Login Page")
+
+Home Page
+
+![Home Page](img/home.png "Home Page")
