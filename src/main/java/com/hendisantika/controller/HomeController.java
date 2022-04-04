@@ -1,8 +1,10 @@
 package com.hendisantika.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,5 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @GetMapping("home")
     public void home() {
+    }
+
+    @GetMapping("auth")
+    @ResponseBody
+    public Authentication auth(Authentication auth) {
+        return auth;
     }
 }
