@@ -33,4 +33,9 @@ public class HomeController {
     @GetMapping("rekening")
     public void daftarRekening() {
     }
+
+    @PreAuthorize("hasAuthority('VIEW_MUTASI')")
+    @GetMapping("mutasi")
+    public void mutasiRekening() {
+    }
 }
