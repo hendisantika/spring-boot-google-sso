@@ -38,4 +38,9 @@ public class HomeController {
     @GetMapping("mutasi")
     public void mutasiRekening() {
     }
+
+    @PreAuthorize("hasAuthority('EDIT_TRANSFER')")
+    @GetMapping("transfer")
+    public void transfer() {
+    }
 }
