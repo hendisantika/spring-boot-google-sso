@@ -1,5 +1,6 @@
 package com.hendisantika.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,5 +27,10 @@ public class HomeController {
     @ResponseBody
     public Authentication auth(Authentication auth) {
         return auth;
+    }
+
+    @PreAuthorize("hasAuthority('VIEW_REKENING')")
+    @GetMapping("rekening")
+    public void daftarRekening() {
     }
 }
